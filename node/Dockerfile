@@ -3,7 +3,6 @@ FROM node:16.13.2-alpine as builder
 WORKDIR /usr/app
 
 COPY package.json .
-COPY package-lock.json .
 COPY src ./src
 
 RUN npm install
@@ -22,5 +21,3 @@ RUN apk update && apk add wget
 RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
 	&& tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
 	&& rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-
-CMD ["npm", "start"];
