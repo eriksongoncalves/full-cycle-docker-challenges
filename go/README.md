@@ -1,18 +1,14 @@
-# Full Cycle - Docker challenges
-
-## Go challenges
-
---------------------------------------------
 #### Run from dockerhub
---------------------------------------------
+
+---
 
 ```
 docker run --rm -it eriksonbezerra/go_hello
 ```
 
---------------------------------------------
 #### Create your own image
---------------------------------------------
+
+---
 
 <br />
 
