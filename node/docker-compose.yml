@@ -10,6 +10,8 @@ services:
 
     restart: always
 
+    tty: true
+
     environment:
       - MYSQL_DATABASE=nodedb
       - MYSQL_ROOT_PASSWORD=fullcycle
@@ -21,11 +23,14 @@ services:
       - fullcycle-node
 
   app:
-    build: .
+    build:
+        context: .
 
     container_name: app
 
-    entrypoint: dockerize -wait tcp://db:3306 -timeout 20s docker-entrypoint.sh
+    #entrypoint: dockerize -wait tcp://db:3306 -timeout 20s docker-entrypoint.sh
+
+    tty: true
 
     volumes:
       - ./app:/usr/app
@@ -34,13 +39,15 @@ services:
       - fullcycle-node
 
     depends_on:
-      - db
+     - db
 
   nginx: 
     build: 
       context: ./nginx
 
     container_name: nginx
+
+    tty: true
 
     ports: 
       - 8080:80
